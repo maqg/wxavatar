@@ -17,10 +17,8 @@
   </view>
 
   <view>
-    <view id="imgBox" style="width:1000px;height:800px;"></view>
-  </view>
-  <view>
-    <canvas canvas-id="vanvas" style="border: 1px solid;" />
+    <canvas canvas-id="canvas" style="border: 1px solid; width: 400px; height: 520px" />
+    <textarea style='width:120px'>{{imageUrl}}</textarea>
   </view>
 
 </view>

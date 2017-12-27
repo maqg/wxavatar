@@ -15,18 +15,53 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     welcome: "欢迎使用北京地铁票价助手",
+    imageUrl: "",
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   //事件处理函数
   combinePictures: function () {
-    var cv = wx.createCanvasContext("canvas");
+    var ctx = wx.createCanvasContext("canvas");
     var len = pictureList.length;
 
-    cv.setFillStyle('red')
-    cv.fillRect(10, 10, 1500, 750)
-    cv.draw()
+    var _this = this;
 
+    ctx.setFillStyle('red')
+    //ctx.fillRect(10, 10, 150, 100)
+    ctx.drawImage(this.data.userInfo.avatarUrl, 0, 0, 120, 120)
+    ctx.drawImage("/pages/images/christmas1.png", 40, 0, 80, 80)
+
+    /*
+    ctx.drawImage(pictureList[0], 0, 0)
+    ctx.drawImage(pictureList[1], 0, 0)
+    ctx.drawImage(pictureList[2], 0, 0)
+    ctx.drawImage(pictureList[3], 0, 0)
+    */
+
+    ctx.setTextAlign('center')
+    ctx.setFontSize(15)
+    ctx.fillText("我的新年捡", 150, 20)
+
+    ctx.draw()
+
+    wx.canvasToTempFilePath({
+      x: 0,
+      y: 0,
+      canvasId: 'canvas',
+      success: function (res) {
+        console.log(res.tempFilePath)
+        _this.setData({
+          imageUrl: res.tempFilePath,          
+        })
+      },
+      complete: function (res) {
+        console.log(res.tempFilePath)
+        _this.setData({
+          imageUrl: res.tempFilePath,
+        })
+      }
+    })
+/*
     function draw(n) {
       if (n < len) {
         var img = new Image;
@@ -42,7 +77,7 @@ Page({
         document.getElementById("imgBox").innerHTML = '<image src="' + base64[0] + '">';
       }
     }
-    //draw(0)
+    //draw(0)*/
 
   },
 
