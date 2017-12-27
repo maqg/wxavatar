@@ -16,10 +16,13 @@ Page({
     hasUserInfo: false,
     welcome: "欢迎使用北京地铁票价助手",
     imageUrl: "",
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    avatarTmpUrl: "",
   },
 
-  combineImage: function(avatarUrl) {
+  combineImage: function() {
+
+    var avatarUrl = this.data.avatarTmpUrl;
 
     var ctx = wx.createCanvasContext("canvas");
     var _this = this;
@@ -60,12 +63,20 @@ Page({
   combinePictures: function () {
 
     var avatarUrl = this.data.userInfo.avatarUrl
+    var _this = this;
 
     wx.downloadFile({
-      url: this.data.userInfo.avatarUrl,
+      url: _this.data.userInfo.avatarUrl,
       success: function (res) {
         console.log(res)
-        avatarUrl = res.tempFilePath;
+        _this.setData({
+          avatarTmpUrl: res.tempFilePath,
+        })
+        setTimeout(function() {
+          wx.hideLoading();
+          _this.combineImage()
+        }, 2000)
+        /*
     
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
@@ -81,6 +92,7 @@ Page({
             })
           }
         })
+        */
     
       },
     })
