@@ -27,8 +27,28 @@ Page({
     var _this = this;
 
     ctx.setFillStyle('red')
+    var avatarUrl = ""
+
+    wx.downloadFile({
+      url: this.data.userInfo.avatarUrl,
+      success: function (res) {
+        console.log(res)
+        wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success: function (res) {
+            console.log(res)
+            avatarUrl = res.tempFilePath;
+          },
+          fail: function (res) {
+            console.log(res)
+            console.log('fail')
+          }
+        })
+      },
+    })  
+
     //ctx.fillRect(10, 10, 150, 100)
-    ctx.drawImage(this.data.userInfo.avatarUrl, 0, 0, 120, 120)
+    ctx.drawImage(avatarUrl, 0, 0, 120, 120)
     ctx.drawImage("/pages/images/christmas1.png", 40, 0, 80, 80)
 
     /*
