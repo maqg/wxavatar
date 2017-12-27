@@ -19,44 +19,21 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
-  //事件处理函数
-  combinePictures: function () {
+  combineImage: function(avatarUrl) {
+
     var ctx = wx.createCanvasContext("canvas");
-    var len = pictureList.length;
-
     var _this = this;
-
-    ctx.setFillStyle('red')
-    var avatarUrl = ""
-
-    wx.downloadFile({
-      url: this.data.userInfo.avatarUrl,
-      success: function (res) {
-        console.log(res)
-        wx.saveImageToPhotosAlbum({
-          filePath: res.tempFilePath,
-          success: function (res) {
-            console.log(res)
-            avatarUrl = res.tempFilePath;
-          },
-          fail: function (res) {
-            console.log(res)
-            console.log('fail')
-          }
-        })
-      },
-    })  
 
     //ctx.fillRect(10, 10, 150, 100)
     ctx.drawImage(avatarUrl, 0, 0, 120, 120)
-    ctx.drawImage("/pages/images/christmas1.png", 40, 0, 80, 80)
+    ctx.drawImage("/pages/images/christmas1.png", 45, 0, 65, 65)
 
-    /*
-    ctx.drawImage(pictureList[0], 0, 0)
-    ctx.drawImage(pictureList[1], 0, 0)
-    ctx.drawImage(pictureList[2], 0, 0)
-    ctx.drawImage(pictureList[3], 0, 0)
-    */
+
+    //ctx.drawImage(pictureList[0], 0, 0)
+    //ctx.drawImage(pictureList[1], 0, 0)
+    //ctx.drawImage(pictureList[2], 0, 0)
+    //ctx.drawImage(pictureList[3], 0, 0)
+
 
     ctx.setTextAlign('center')
     ctx.setFontSize(15)
@@ -71,33 +48,42 @@ Page({
       success: function (res) {
         console.log(res.tempFilePath)
         _this.setData({
-          imageUrl: res.tempFilePath,          
-        })
-      },
-      complete: function (res) {
-        console.log(res.tempFilePath)
-        _this.setData({
           imageUrl: res.tempFilePath,
         })
-      }
+      },
     })
-/*
-    function draw(n) {
-      if (n < len) {
-        var img = new Image;
-        img.crossOrigin = 'Anonymous'; //解决跨域  
-        img.src = data[n];
-        console.log(data[n]);
-        img.onload = function () {
-          cv.drawImage(this, 0, 0, 640, 386);
-          draw(n + 1);
-        }
-      } else {
-        base64.push(cv.toDataURL("image/png"));
-        document.getElementById("imgBox").innerHTML = '<image src="' + base64[0] + '">';
-      }
-    }
-    //draw(0)*/
+
+
+  },
+
+  //事件处理函数
+  combinePictures: function () {
+
+    var avatarUrl = this.data.userInfo.avatarUrl
+
+    wx.downloadFile({
+      url: this.data.userInfo.avatarUrl,
+      success: function (res) {
+        console.log(res)
+        avatarUrl = res.tempFilePath;
+    
+        wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success: function (res) {
+            console.log(res)
+            avatarUrl = res.tempFilePath;
+            this.combineImage(avatarUrl);
+          },
+          fail: function(res) {
+            wx.showModal({
+              title: '出錯了',
+              content: JSON.stringify(res)
+            })
+          }
+        })
+    
+      },
+    })
 
   },
 
