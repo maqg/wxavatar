@@ -3,10 +3,48 @@
 const app = getApp()
 
 var pictureList = [
-  "/pages/images/1.png",
-  "/pages/images/2.png",
-  "/pages/images/3.png",
-  "/pages/images/4.png"
+  {
+    "src": "/pages/images/left1.png",
+    "x": 40,
+    "y": -10,
+    "width": 80,
+    "height": 80,
+  },
+  {
+    "src": "/pages/images/left2.png",
+    "x": 40,
+    "y": -10,
+    "width": 80,
+    "height": 80,
+  },
+  {
+    "src": "/pages/images/top1.png",
+    "x": 50,
+    "y": -10,
+    "width": 60,
+    "height": 60,
+  },
+  {
+    "src": "/pages/images/top2.png",
+    "x": 50,
+    "y": -10,
+    "width": 60,
+    "height": 60,
+  },
+  {
+    "src": "/pages/images/right1.png",
+    "x": 50,
+    "y": -10,
+    "width": 60,
+    "height": 60,
+  },
+  {
+    "src": "/pages/images/right2.png",
+    "x": 50,
+    "y": -10,
+    "width": 60,
+    "height": 60,
+  }
 ];
 
 Page({
@@ -27,12 +65,10 @@ Page({
     var _this = this;
 
     ctx.drawImage(avatarUrl, 0, 0, 150, 150)
-    ctx.drawImage("/pages/images/right1.png", 100, -25, 65, 65)
 
-    //ctx.drawImage(pictureList[0], 0, 0)
-    //ctx.drawImage(pictureList[1], 0, 0)
-    //ctx.drawImage(pictureList[2], 0, 0)
-    //ctx.drawImage(pictureList[3], 0, 0)
+    var hat0 = pictureList[0];
+
+    ctx.drawImage(hat0["src"], hat0["x"], hat0["y"], hat0["width"], hat0["height"])
 
     ctx.setTextAlign('center')
     ctx.setFontSize(15)
@@ -71,7 +107,6 @@ Page({
 
         wx.saveFile({
           tempFilePath: res.tempFilePath,
-          //tempFilePath: "/pages/images/aaaa.png",
           success: function (res) {
             var savedFilePath = res.savedFilePath
             console.log("save file OK: " + savedFilePath)
