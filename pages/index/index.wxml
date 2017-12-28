@@ -17,8 +17,8 @@
   </view>
 
   <view>
-    <canvas canvas-id="canvas" style="border: 1px solid; width: 400px; height: 520px" />
-    <image style='width:120px' src="{{imageUrl}}"></image>
+    <canvas canvas-id="canvas" style="border: 1px solid; width: 150px; height: 150px" />
+    <image src="{{imageUrl}}"></image>
   </view>
 
 </view>

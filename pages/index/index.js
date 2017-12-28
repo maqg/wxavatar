@@ -20,27 +20,22 @@ Page({
     avatarTmpUrl: "",
   },
 
-  combineImage: function() {
+  combineImage: function () {
 
     var avatarUrl = this.data.avatarTmpUrl;
-
     var ctx = wx.createCanvasContext("canvas");
     var _this = this;
 
-    //ctx.fillRect(10, 10, 150, 100)
-    ctx.drawImage(avatarUrl, 0, 0, 120, 120)
-    ctx.drawImage("/pages/images/christmas1.png", 45, 0, 65, 65)
-
+    ctx.drawImage(avatarUrl, 0, 0, 150, 150)
+    ctx.drawImage("/pages/images/christmas1.png", 55, -10, 80, 80)
 
     //ctx.drawImage(pictureList[0], 0, 0)
     //ctx.drawImage(pictureList[1], 0, 0)
     //ctx.drawImage(pictureList[2], 0, 0)
     //ctx.drawImage(pictureList[3], 0, 0)
 
-
     ctx.setTextAlign('center')
     ctx.setFontSize(15)
-    ctx.fillText("我的新年捡", 150, 20)
 
     ctx.draw()
 
@@ -55,8 +50,6 @@ Page({
         })
       },
     })
-
-
   },
 
   //事件处理函数
@@ -68,35 +61,28 @@ Page({
     wx.downloadFile({
       url: _this.data.userInfo.avatarUrl,
       success: function (res) {
-        console.log(res)
-        _this.setData({
-          avatarTmpUrl: res.tempFilePath,
-        })
+
+        /*
         setTimeout(function() {
           wx.hideLoading();
           _this.combineImage()
         }, 2000)
-        /*
-    
-        wx.saveImageToPhotosAlbum({
-          filePath: res.tempFilePath,
+        */
+
+        wx.saveFile({
+          tempFilePath: res.tempFilePath,
+          //tempFilePath: "/pages/images/aaaa.png",
           success: function (res) {
-            console.log(res)
-            avatarUrl = res.tempFilePath;
-            this.combineImage(avatarUrl);
-          },
-          fail: function(res) {
-            wx.showModal({
-              title: '出錯了',
-              content: JSON.stringify(res)
+            var savedFilePath = res.savedFilePath
+            console.log("save file OK: " + savedFilePath)
+            _this.setData({
+              avatarTmpUrl: savedFilePath,
             })
+            _this.combineImage()
           }
         })
-        */
-    
       },
     })
-
   },
 
   onLoad: function () {
@@ -127,6 +113,7 @@ Page({
       })
     }
   },
+
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
