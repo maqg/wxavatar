@@ -27,7 +27,7 @@ Page({
     var _this = this;
 
     ctx.drawImage(avatarUrl, 0, 0, 150, 150)
-    ctx.drawImage("/pages/images/christmas1.png", 55, -10, 80, 80)
+    ctx.drawImage("/pages/images/right1.png", 100, -25, 65, 65)
 
     //ctx.drawImage(pictureList[0], 0, 0)
     //ctx.drawImage(pictureList[1], 0, 0)
