@@ -26,9 +26,9 @@
 
   <view>
     <button class='combineButton' bindtap='combinePictures'>合成</button>
-    <button class='saveButton' bindtap=''>另存为</button>
+    <button class='saveButton' bindtap='saveAvatar'>另存为</button>
     <button class='replaceButton' bindtap=''>替换</button>
-    <button class='saveOriButton' bindtap=''>保存原头像</button>
+    <button class='saveOriButton' bindtap='saveOriAvatar'>保存原头像</button>
   </view>
 
 </view>

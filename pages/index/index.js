@@ -138,6 +138,24 @@ Page({
     })
   },
 
+  saveOriAvatar: function() {
+    wx.saveImageToPhotosAlbum({
+      filePath: this.data.avatarTmpUrl,
+      success: function(result) {
+        console.log(result)
+      }
+    })
+  },
+
+  saveAvatar: function () {
+    wx.saveImageToPhotosAlbum({
+      filePath: this.data.imageUrl,
+      success: function(result) {
+        console.log(result)
+      }
+    })
+  },
+
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -170,15 +188,6 @@ Page({
       hatList: pictureList,
       hatListLen: pictureList.length,
     })
-
   },
 
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
 })
