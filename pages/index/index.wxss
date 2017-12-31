@@ -12,6 +12,60 @@
   border-radius: 50%;
 }
 
+.avatar {
+  width: 256rpx;
+  height: 256rpx;
+  margin: 5rpx;
+  border-radius: 2%;
+  display: inline-block
+}
+
+.imagehat {
+  position: absolute;
+  right: 20px;
+  top: 40px;
+}
+
+.imageavatar {
+  position: absolute;
+  left: 20px;
+  top: 40px;
+}
+
+.canvas {
+  margin: 0 0 auto;
+}
+
+.combineButton {
+  bottom: 10px;
+  position: absolute;
+  left: 5px;
+  width: auto;
+}
+
+.saveButton {
+  position: absolute;
+  left: 80px;
+  width: auto;
+  bottom: 10px;
+}
+
+.replaceButton {
+  position: absolute;
+  right: 135px;
+  width: auto;
+  bottom: 10px;
+}
+
+.saveOriButton {
+  position: absolute;
+  right: 5px;
+  width: auto;
+  bottom: 10px;
+}
+
+
+
 .userinfo-nickname {
   color: #aaa;
 }

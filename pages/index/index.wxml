@@ -1,24 +1,34 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+<view class='container'>
+  <view class="" style='height: 200px'>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像 </button>
     <block wx:else>
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <image class="avatar imageavatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <image class="avatar imagehat" src="{{hatList[currentHat].src}}" background-size="cover"></image>
+      <!--text class="userinfo-nickname">{{userInfo.nickName}}</text-->
     </block>
   </view>
 
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view>
+    <canvas class='canvas avatar' canvas-id="canvas" style="border: 1px solid; width: 150px; height: 150px" />
+    <!--image data-src="{{imageUrl}}" mode="widthFix" class='avatar' src="{{imageUrl}}"></image-->
   </view>
 
-  <view>
-    <button bindtap='combinePictures'>合成</button>
-  </view>
 
   <view>
-    <canvas canvas-id="canvas" style="border: 1px solid; width: 150px; height: 150px" />
-    <image src="{{imageUrl}}"></image>
+    <!--button class='leftButton' bindtap='combinePictures'>左移</button>
+    <button class='rightButton' bindtap=''>右移</button>
+    <button class='downButton' bindtap=''>下移</button>
+    <button class='upButton' bindtap=''>上移</button-->
+    <button class='nextButton' bindtap='nextHat'>换一个</button>
+  </view>
+
+
+  <view>
+    <button class='combineButton' bindtap='combinePictures'>合成</button>
+    <button class='saveButton' bindtap=''>另存为</button>
+    <button class='replaceButton' bindtap=''>替换</button>
+    <button class='saveOriButton' bindtap=''>保存原头像</button>
   </view>
 
 </view>

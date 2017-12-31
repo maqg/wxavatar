@@ -54,6 +54,9 @@ Page({
     hasUserInfo: false,
     welcome: "欢迎使用北京地铁票价助手",
     imageUrl: "",
+    hatList: [],
+    hatListLen: 0,
+    currentHat: 0,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     avatarTmpUrl: "",
   },
@@ -66,9 +69,9 @@ Page({
 
     ctx.drawImage(avatarUrl, 0, 0, 150, 150)
 
-    var hat0 = pictureList[0];
+    var hat = this.data.hatList[this.data.currentHat];
 
-    ctx.drawImage(hat0["src"], hat0["x"], hat0["y"], hat0["width"], hat0["height"])
+    ctx.drawImage(hat["src"], hat["x"], hat["y"], hat["width"], hat["height"])
 
     ctx.setTextAlign('center')
     ctx.setFontSize(15)
@@ -88,8 +91,23 @@ Page({
     })
   },
 
+  nextHat: function() {
+    var currentHat = this.data.currentHat;
+    if (currentHat < this.data.hatListLen - 1) {
+      currentHat++;
+    } else {
+      currentHat = 0;
+    }
+
+    this.setData({
+      currentHat: currentHat,
+    })
+
+    this.combinePictures()
+  },
+
   //事件处理函数
-  combinePictures: function () {
+  combinePictures: function() {
 
     var avatarUrl = this.data.userInfo.avatarUrl
     var _this = this;
@@ -147,6 +165,12 @@ Page({
         }
       })
     }
+
+    this.setData({
+      hatList: pictureList,
+      hatListLen: pictureList.length,
+    })
+
   },
 
   getUserInfo: function (e) {
