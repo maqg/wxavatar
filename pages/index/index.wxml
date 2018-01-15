@@ -3,15 +3,15 @@
   <view class="" style='height: 200px'>
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像 </button>
     <block wx:else>
-      <image class="avatar imageavatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <image class="avatar imageavatar" bindtap='previewOriImage' src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <image class="avatar imagehat" src="{{hatList[currentHat].src}}" background-size="cover"></image>
       <!--text class="userinfo-nickname">{{userInfo.nickName}}</text-->
     </block>
   </view>
 
   <view>
-    <canvas class='canvas avatar' canvas-id="canvas" style="border: 1px solid; width: 150px; height: 150px" />
-    <!--image data-src="{{imageUrl}}" mode="widthFix" class='avatar' src="{{imageUrl}}"></image-->
+    <canvas bindtap="previewImage" class='canvas avatar' canvas-id="canvas" style="border: 1px solid; width: 150px; height: 150px" />
+    <!--image data-src="{{imageUrl}}" mode="widthFix" class='avatar' src="{{imageUrl}}" bindtap="previewImage"></image-->
   </view>
 
 
@@ -26,9 +26,9 @@
 
   <view>
     <button class='combineButton' bindtap='combinePictures'>合成</button>
-    <button class='saveButton' bindtap='saveAvatar'>另存为</button>
-    <button class='replaceButton' bindtap=''>替换</button>
-    <button class='saveOriButton' bindtap='saveOriAvatar'>保存原头像</button>
+    <button class='saveButton' bindtap='previewImage'>另存为</button>
+    <!--button class='replaceButton' bindtap=''>替换</button-->
+    <button class='saveOriButton' bindtap='previewOriImage'>保存原头像</button>
   </view>
 
 </view>

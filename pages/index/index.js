@@ -61,6 +61,20 @@ Page({
     avatarTmpUrl: "",
   },
 
+  previewImage: function (e) {
+    wx.previewImage({
+      current: [this.data.imageUrl],
+      urls: [this.data.imageUrl],
+    })
+  },
+
+  previewOriImage: function (e) {
+    wx.previewImage({
+      current: [this.data.userInfo.avatarUrl],
+      urls: [this.data.userInfo.avatarUrl],
+    })
+  },
+
   combineImage: function () {
 
     var avatarUrl = this.data.avatarTmpUrl;

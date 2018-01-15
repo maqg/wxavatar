@@ -37,7 +37,7 @@
 }
 
 .combineButton {
-  bottom: 10px;
+  bottom: 30px;
   position: absolute;
   left: 5px;
   width: auto;
@@ -45,23 +45,24 @@
 
 .saveButton {
   position: absolute;
-  left: 80px;
-  width: auto;
-  bottom: 10px;
+  left: 20%;
+  right: 30%;
+  width: 100px;
+  bottom: 30px;
 }
 
 .replaceButton {
   position: absolute;
   right: 135px;
   width: auto;
-  bottom: 10px;
+  bottom: 30px;
 }
 
 .saveOriButton {
   position: absolute;
   right: 5px;
   width: auto;
-  bottom: 10px;
+  bottom: 30px;
 }
 
 
