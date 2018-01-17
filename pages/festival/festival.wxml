@@ -1,0 +1,4 @@
+<!--festival.wxml-->
+<view class='container'>
+  <view>新年签</view>
+</view>
