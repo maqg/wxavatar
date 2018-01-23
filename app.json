@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/festival/festival"
+    "pages/festival/festival",
+    "pages/festival/forcastsex"
   ],
   "window":{
     "backgroundTextStyle":"light",
