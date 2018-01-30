@@ -2,7 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/festival/festival",
-    "pages/festival/forcastsex"
+    "pages/forcastsex/forcastsex"
   ],
   "window":{
     "backgroundTextStyle":"light",
