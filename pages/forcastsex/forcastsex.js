@@ -14,15 +14,9 @@ var questionList = [
 
 Page({
   data: {
-    motto: '不疯狂，无人生',
     userInfo: {},
     hasUserInfo: false,
-    imageUrl: "",
-    hatList: [],
-    hatListLen: 0,
-    currentHat: 0,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    avatarTmpUrl: "",
   },
 
   onLoad: function () {
@@ -54,8 +48,6 @@ Page({
     }
 
     this.setData({
-      hatList: pictureList,
-      hatListLen: pictureList.length,
     })
   },
 })

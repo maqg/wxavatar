@@ -1,8 +1,14 @@
 <!--index.wxml-->
 <view class='container'>
-  
+
   <view>
-    Welcome to Main Page.
+    欢迎使用百变小助手
+  </view>
+
+  <view class="navigatorView">
+    <navigator url="/pages/avatar/avatar" open-type="navigate" hover-class="other-navigator-hover">头像</navigator>
+    <navigator url="/pages/festival/festival" open-type="navigate" hover-class="other-navigator-hover">新年签</navigator>
+    <navigator url="/pages/forcastsex/forcastsex" open-type="navigate" hover-class="other-navigator-hover">性别预测</navigator>
   </view>
 
 </view>

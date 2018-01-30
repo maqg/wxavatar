@@ -116,8 +116,6 @@ Page({
     }
 
     this.setData({
-      hatList: pictureList,
-      hatListLen: pictureList.length,
     })
   },
 })
