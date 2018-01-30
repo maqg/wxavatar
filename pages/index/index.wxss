@@ -1,1 +1,7 @@
 /**index.wxss**/
+
+.navigatorView {
+  display: flex;
+  flex-direction: column;
+  color: red;
+}
