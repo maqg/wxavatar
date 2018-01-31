@@ -1,14 +1,43 @@
 <!--index.wxml-->
 <view class='container'>
 
-  <view>
+  <view id="header">
     欢迎使用百变小助手
   </view>
 
+  <view id="topImage">
+    <image src='/pages/images/top.jpg' style='height: 100px; margin-left: 10px; margin-right: 10px'></image>
+  </view>
+
   <view class="navigatorView">
-    <navigator url="/pages/avatar/avatar" open-type="navigate" hover-class="other-navigator-hover">头像</navigator>
-    <navigator url="/pages/festival/festival" open-type="navigate" hover-class="other-navigator-hover">新年签</navigator>
-    <navigator url="/pages/forcastsex/forcastsex" open-type="navigate" hover-class="other-navigator-hover">性别预测</navigator>
+
+    <view class='subNav'>
+      <navigator url="/pages/avatar/avatar" open-type="navigate" hover-class="other-navigator-hover">
+        <view style='display: flex; flex-direction: column;'>
+          <image src='/pages/images/logo.jpg' style='width: 120px; height:120px'></image>
+          <text style='align-content: center'>我的百变头像</text>
+        </view>
+
+      </navigator>
+      <navigator url="/pages/festival/festival" open-type="navigate" hover-class="other-navigator-hover" id="festivalNav">
+        <view style='display: flex; flex-direction: column;'>
+          <image src='/pages/images/sign.jpg' style='width: 120px; height:120px'></image>
+          <text style='align-content: center'>我的新年签</text>
+        </view>
+      </navigator>
+    </view>
+
+    <view class='subNav'>
+      <navigator url="/pages/forcastsex/forcastsex" open-type="navigate" hover-class="other-navigator-hover" style='display: flex; flex-direction: column;'>
+        <image src='/pages/images/babysex.jpg' style='width: 120px; height:120px'></image>
+        <text style='align-content: center'>宝宝性别预测</text>
+      </navigator>
+      <navigator url="/pages/about/about" open-type="navigate" hover-class="other-navigator-hover" style='display: flex; flex-direction: column;'>
+        <image src='/pages/images/about.png' style='width: 120px; height:120px'></image>
+        <text style='align-content: center'>关于百变助手</text>
+      </navigator>
+    </view>
+
   </view>
 
 </view>

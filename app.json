@@ -1,14 +1,15 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/festival/festival",
     "pages/forcastsex/forcastsex",
+    "pages/about/about",
     "pages/avatar/avatar"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "百变头像",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

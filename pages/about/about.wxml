@@ -1,0 +1,4 @@
+<!--festival.wxml-->
+<view class='container'>
+  <view>关于百变助手</view>
+</view>
