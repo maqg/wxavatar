@@ -23,15 +23,21 @@ var questionList = [
     "scores": [],
   },
   {
-    "male": "你是否觉得自己足够强壮？",
+    "male": "你是否觉得自己足够强壮吗？",
     "female": "你觉得他的身体足够强壮吗？",
-    "freind": "你感觉男士是否足够强壮？",
+    "freind": "你感觉男士是否足够强壮吗？",
     "scores": [],
   },
   {
-    "male": "你是否觉得自己足够光彩照人？",
-    "female": "你觉得也足够光彩照人？",
-    "freind": "你感觉女士足够光彩照人？",
+    "male": "你是否觉得自己足够光彩照人吗？",
+    "female": "你觉得她足够光彩照人吗？",
+    "freind": "你感觉女士足够光彩照人吗？",
+    "scores": [],
+  },
+  {
+    "male": "平时主要是你女士做饭吗？",
+    "female": "平时主要是你做饭吗？",
+    "freind": "平时主要是女士做饭吗？",
     "scores": [],
   },
 ];
@@ -41,6 +47,38 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    subjectNumber: 1,
+    maxSubjects: 0,
+    questionBody: "和另一半相比，觉得自己更有吸引力？",
+    totalScore: 0,
+    thisAnswer: "",
+    position: "male",
+    array: [
+      {name: '是', value: 'YES'},
+      {name: '不是', value: 'NO'},
+      {name: '不确定', value: 'UNKNOWN'},
+    ]
+  },
+
+  listenRadioGroup: function(e)  {
+    this.setData({
+      thisAnswer: e.detail.value
+    })
+  },
+
+  nextSubject: function() {
+
+    var subjectNumber = this.data.subjectNumber;
+
+    if (subjectNumber >= this.data.maxSubjects - 1) {
+      console.log("finished");
+      return;
+    }
+
+    this.setData({
+      subjectNumber: subjectNumber + 1,
+      questionBody: questionList[subjectNumber + 1].male,
+    })
   },
 
   onLoad: function () {
@@ -71,7 +109,15 @@ Page({
       })
     }
 
+    var position = "male";
+    if (this.data.userInfo.gender != 1) {
+      position = "female";
+    }
+
     this.setData({
+      maxSubjects: questionList.length,
+      subjectNumber: 0,
+      position: position,
     })
   },
 })

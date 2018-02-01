@@ -1,4 +1,26 @@
 <!--festival.wxml-->
 <view class='container'>
   <view>欢迎使用宝宝性别预测</view>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view>
+    <view>
+      第{{subjectNumber + 1}}题
+    </view>
+    <view>
+      {{questionBody}}
+    </view>
+    <radio-group bindchange="listenRadioGroup">
+      <label style="display: flex" wx:for="{{array}}" wx:key="name">
+        <radio value="{{item.value}}" checked="{{item.checked}}" />{{item.name}}
+      </label>
+    </radio-group>
+
+  </view>
+  <button bindtap='nextSubject'>确定</button>
 </view>
