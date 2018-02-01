@@ -66,12 +66,15 @@ Page({
     })
   },
 
-  nextSubject: function() {
+  nextSubject: function(e) {
 
     var subjectNumber = this.data.subjectNumber;
 
-    if (subjectNumber >= this.data.maxSubjects - 1) {
-      console.log("finished");
+    if (subjectNumber >= this.data.maxSubjects - 1) {      
+      app.globalData.forcastResult = "宝宝的性别预测结果为：男宝/女宝";
+      wx.navigateTo({
+        url: '/pages/forcastsex/forcastsexresult',
+      });
       return;
     }
 

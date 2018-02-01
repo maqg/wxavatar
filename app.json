@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/festival/festival",
     "pages/forcastsex/forcastsex",
+    "pages/forcastsex/forcastsexresult",
     "pages/about/about",
     "pages/avatar/avatar"
   ],
